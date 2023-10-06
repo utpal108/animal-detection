@@ -1,1 +1,1 @@
-# animal-detection
+# Computer Vision Project on Animal Detection
