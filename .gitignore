@@ -129,7 +129,7 @@ env.bak/
 venv.bak/
 
 # Artifacts/Datasets
-artifacts/
+artifacts/*
 
 # Spyder project settings
 .spyderproject
