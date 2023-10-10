@@ -22,7 +22,7 @@ class ModelTrainingPipeline:
         training.train_valid_generator()
         training.train(
             callback_list=callback_list
-    )
+        )
         
     
 if __name__ == '__main__':
