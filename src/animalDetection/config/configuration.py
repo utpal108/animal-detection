@@ -1,6 +1,6 @@
 from animalDetection.constants import *
 from animalDetection.utils.common import  read_yaml, create_directories
-from animalDetection.entity.config_entity import DataIngestionConfig, PrepareBaseModelConfig, PrepareCallbacksConfig, TrainingConfig
+from animalDetection.entity.config_entity import DataIngestionConfig, PrepareBaseModelConfig, PrepareCallbacksConfig, TrainingConfig, EvaluationConfig
 import os
 
 # Configuration Manager
@@ -85,3 +85,14 @@ class ConfigurationManager:
         )
 
         return training_config
+    
+    def get_validation_config(self)->EvaluationConfig:
+        eval_config = EvaluationConfig(
+            path_of_model = Path(self.config.training.trained_model_path),
+            validation_data = Path(os.path.join(self.config.data_ingestion.root_dir,'animal_detection_dataset/validation')),
+            all_params = self.params,
+            params_image_size = self.params.IMAGE_SIZE,
+            params_batch_size = self.params.BATCH_SIZE
+        )
+
+        return eval_config

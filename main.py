@@ -2,6 +2,7 @@ from src.animalDetection import logger
 from animalDetection.pipeline.stage_01_data_ingestion import DataIngestionTrainingPipeline
 from animalDetection.pipeline.stage_02_prepare_base_model import PrepareBaseModelTrainingPipeline
 from animalDetection.pipeline.stage_03_training import ModelTrainingPipeline
+from animalDetection.pipeline.stage_04_evaluation import EvaluationPipeline
 
 STAGE_NAME = 'Data Ingestion Stage'
 
@@ -32,6 +33,17 @@ STAGE_NAME = 'Training'
 try:
     logger.info(f'>>>>>>> Stage {STAGE_NAME} started <<<<<<<')
     obj = ModelTrainingPipeline()
+    obj.main()
+    logger.info(f'>>>>>>> Stage {STAGE_NAME} Completed <<<<<<<\n\nx================================x')
+except Exception as e:
+    logger.exception(e)
+    raise e
+
+STAGE_NAME = 'Model Evaluation'
+
+try:
+    logger.info(f'>>>>>>> Stage {STAGE_NAME} started <<<<<<<')
+    obj = EvaluationPipeline()
     obj.main()
     logger.info(f'>>>>>>> Stage {STAGE_NAME} Completed <<<<<<<\n\nx================================x')
 except Exception as e:
