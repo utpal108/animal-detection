@@ -23,4 +23,8 @@ training:
   trained_model_path: artifacts/training/model.h5
 
 
+predict:
+  root_dir: artifacts/predict
+
+
 

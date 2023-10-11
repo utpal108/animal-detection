@@ -1,6 +1,6 @@
 from animalDetection.constants import *
 from animalDetection.utils.common import  read_yaml, create_directories
-from animalDetection.entity.config_entity import DataIngestionConfig, PrepareBaseModelConfig, PrepareCallbacksConfig, TrainingConfig, EvaluationConfig
+from animalDetection.entity.config_entity import DataIngestionConfig, PrepareBaseModelConfig, PrepareCallbacksConfig, TrainingConfig, EvaluationConfig, PredictionConfig
 import os
 
 # Configuration Manager
@@ -96,3 +96,11 @@ class ConfigurationManager:
         )
 
         return eval_config
+    
+    def get_prediction_config(self)->PredictionConfig:
+        create_directories([self.config.predict.root_dir])
+        pred_config = PredictionConfig(
+            root_dir = Path(self.config.predict.root_dir)
+        )
+
+        return pred_config

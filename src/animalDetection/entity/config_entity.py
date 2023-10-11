@@ -47,3 +47,7 @@ class EvaluationConfig:
     all_params: dict
     params_image_size: list
     params_batch_size: int
+
+@dataclass(frozen=True)
+class PredictionConfig:
+    root_dir: Path
